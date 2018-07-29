@@ -9,6 +9,7 @@
         android:background="@color/backgroundColor">
 
         <ImageButton
+            android:id="@+id/backBtn"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/back_icon"
