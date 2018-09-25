@@ -4,4 +4,6 @@
     <color name="colorAccent">#fdd947</color>
     <color name="textColor1">#454547</color>
     <color name="textColor2">#252525</color>
+    <color name="shadow">#ababab</color>
+    <color name="btn_shadow">#7d000000</color>
 </resources>

@@ -18,17 +18,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gotham_bold"
-            android:text="Medical"
-            android:textSize="32sp"
-            android:textColor="#252525"/>
+            android:text="MEDICAL"
+            android:textSize="40sp"
+            android:textColor="#ffffff"/>
         <TextView
             android:id="@+id/splash2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gotham_light"
-            android:text="Myths"
-            android:textSize="32sp"
-            android:textColor="#252525"/>
+            android:text="MYTHS"
+            android:textSize="40sp"
+            android:textColor="#ffffff"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -5,89 +5,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/main_bg"
+    android:background="#f6f6f6"
     >
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="143dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/titleContainer"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/titleContainer">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_bold"
+                android:text="MedMyths"
+                android:textSize="50sp"
+                android:textColor="@color/shadow"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="3dp"/>
+            <TextView
+                android:id="@+id/tvTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_bold"
                 android:text="Med"
-                android:textSize="32sp"
+                android:textSize="50sp"
                 android:textColor="#252525"
                 android:layout_marginBottom="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_light"
+                android:layout_toEndOf="@id/tvTitle1"
                 android:text="Myths"
-                android:textSize="32sp"
-                android:textColor="#252525"
+                android:textSize="50sp"
+                android:textColor="@color/textColor2"
                 android:layout_marginBottom="10dp"/>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/logoMain"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/logoContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/maskot"
+            android:layout_below="@id/titleContainer"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="25dp"
-            android:layout_below="@id/titleContainer">
-        </ImageView>
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_light"
+                android:text="fact?"
+                android:textSize="24sp"
+                android:textColor="#252525"
+                android:layout_toStartOf="@id/logoMain"
+                android:layout_alignBottom="@id/logoMain"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_light"
+                android:text="myth?"
+                android:textSize="24sp"
+                android:textColor="@color/textColor2"
+                android:layout_toEndOf="@id/logoMain"
+                android:layout_alignTop="@id/logoMain"
+                android:layout_marginStart="-16dp"/>
+
+            <ImageView
+                android:id="@+id/logoMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/maskot"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/playBtn"
-            android:layout_width="150dp"
+            android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:background="@drawable/round_button"
-            android:layout_below="@id/logoMain"
+            android:background="@drawable/btn_shadow"
+            android:layout_below="@id/logoContainer"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/gotham_bold"
             android:text="Play"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textColor="@color/textColor2"/>
 
         <Button
             android:id="@+id/factsBtn"
-            android:layout_width="150dp"
+            android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/btn_shadow"
             android:layout_below="@id/playBtn"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="13dp"
             android:fontFamily="@font/gotham_bold"
-            android:text="Facts"
-            android:textSize="20sp"
+            android:text="Library"
+            android:textSize="24sp"
             android:textColor="@color/textColor2"/>
 
         <Button
             android:id="@+id/settingsBtn"
-            android:layout_width="150dp"
+            android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/btn_shadow"
             android:layout_below="@id/factsBtn"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="13dp"
             android:fontFamily="@font/gotham_bold"
             android:text="Settings"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textColor="@color/textColor2"/>
-
-    </RelativeLayout>
 
 </RelativeLayout>
