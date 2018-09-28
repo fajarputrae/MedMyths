@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.coinbkt.medmyth.utils.SPMedmyth;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -58,6 +60,8 @@ public class SplashActivity extends AppCompatActivity {
                         sleep(100);
                         waited += 100;
                     }
+                    SPMedmyth.setIsMute(SplashActivity.this, true);
+                    SPMedmyth.setIsFx(SplashActivity.this, true);
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);

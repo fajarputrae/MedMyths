@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FactsActivity"
+        tools:context=".FMLibraryActivity"
         android:padding="15dp"
         android:background="@color/backgroundColor">
 
@@ -13,19 +13,20 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/back_icon"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"/>
         <TextView
             android:id="@+id/factsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Facts"
+            android:text="Facts/Myth"
             android:textColor="@color/textColor2"
             android:fontFamily="@font/gotham_bold"
             android:textSize="32sp"
             android:layout_centerHorizontal="true"/>
 
         <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar"
             android:layout_below="@id/factsTitle"
             style="@style/MaterialSearchBarLight"
             app:mt_speechMode="false"
@@ -33,7 +34,6 @@
             app:mt_placeholder=" "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/searchBar"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"

@@ -1,6 +1,7 @@
 package com.coinbkt.medmyth;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,20 +19,25 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.settingsBtn)
     Button settingsBtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //start service and play music
         startService(new Intent(MainActivity.this, SoundService.class));
-        SPMedmyth.setIsMute(MainActivity.this, true);
 
+        final MediaPlayer mp = MediaPlayer.create(this,R.raw.click);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        final Boolean isFx = SPMedmyth.getIsFX(this);
+
         factsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FactsActivity.class);
+                if(isFx)
+                    mp.start();
+                Intent intent = new Intent(MainActivity.this, FMLibraryActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isFx)
+                    mp.start();
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
@@ -58,4 +66,5 @@ public class MainActivity extends AppCompatActivity {
         stopService(objIntent);
         super.onDestroy();
     }
+
 }
