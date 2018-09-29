@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/backgroundColor">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham_bold"
+        android:text="SCORES"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textColor="@color/textColor2"
+        android:layout_marginTop="55dp"/>
+
+    <ImageView
+        android:id="@+id/ivHiasan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvScores"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-24dp"
+        android:src="@drawable/hiasan"/>
+
+    <TextView
+        android:id="@+id/tvScores"
+        android:layout_below="@id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham_bold"
+        android:text="0"
+        android:layout_alignStart="@id/tvScores1"
+        android:textSize="51sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="4dp"/>
+
+    <TextView
+        android:id="@+id/tvScores1"
+        android:layout_below="@id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham_bold"
+        android:text="0"
+        android:layout_centerHorizontal="true"
+        android:textSize="51sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="15dp"/>
+
+    <LinearLayout
+        android:id="@+id/linScores"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivHiasan"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="297dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="21dp"
+        android:layout_below="@id/linScores">
+
+        <RelativeLayout
+            android:id="@+id/linLibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
+
+            <TextView
+                android:id="@+id/tvFMTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_bold"
+                android:layout_centerHorizontal="true"
+                android:text="FACTS/MYTH"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="23dp"/>
+
+            <TextView
+                android:id="@+id/tvMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tvFMTitle"
+                android:fontFamily="@font/gotham_light"
+                android:textSize="17sp"
+                android:layout_marginTop="9dp"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/textColor2"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

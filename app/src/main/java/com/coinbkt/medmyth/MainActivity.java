@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.playBtn)
+    Button playBtn;
     @BindView(R.id.factsBtn)
     Button factsBtn;
     @BindView(R.id.settingsBtn)
@@ -31,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         final Boolean isFx = SPMedmyth.getIsFX(this);
+
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFx)
+                    mp.start();
+                Intent intent = new Intent(MainActivity.this, PackActivity.class);
+                startActivity(intent);
+            }
+        });
 
         factsBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,18 +8,20 @@ import org.greenrobot.greendao.annotation.*;
 // KEEP INCLUDES END
 
 /**
- * Entity mapped to table "FMLibrary".
+ * Entity mapped to table "FMLIBRARY".
  */
-@Entity(nameInDb = "FMLibrary")
+@Entity
 public class FMLibrary {
 
     @Id(autoincrement = true)
     private Long id;
     private Integer thumbImg;
     private Integer img;
+    private String packName;
     private String category;
     private String title;
     private String desc;
+    private String status;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -33,13 +35,15 @@ public class FMLibrary {
     }
 
     @Generated
-    public FMLibrary(Long id, Integer thumbImg, Integer img, String category, String title, String desc) {
+    public FMLibrary(Long id, Integer thumbImg, Integer img, String packName, String category, String title, String desc, String status) {
         this.id = id;
         this.thumbImg = thumbImg;
         this.img = img;
+        this.packName = packName;
         this.category = category;
         this.title = title;
         this.desc = desc;
+        this.status = status;
     }
 
     public Long getId() {
@@ -66,6 +70,14 @@ public class FMLibrary {
         this.img = img;
     }
 
+    public String getPackName() {
+        return packName;
+    }
+
+    public void setPackName(String packName) {
+        this.packName = packName;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -88,6 +100,14 @@ public class FMLibrary {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // KEEP METHODS - put your custom methods here

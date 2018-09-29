@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="142dp"
+    android:layout_height="158dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/packImage"
+        android:layout_width="142dp"
+        android:layout_height="158dp"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pack_food"
+        />
+
+    <ImageView
+        android:layout_width="142dp"
+        android:layout_height="158dp"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle"
+        android:alpha="0.6"
+        />
+
+    <TextView
+        android:id="@+id/packPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pack Points"
+        android:fontFamily="@font/gotham_bold"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/packName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pack Title"
+        android:fontFamily="@font/gotham_bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="23sp"
+        android:layout_above="@id/packPoints"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <ImageView
+        android:id="@+id/imgShadow"
+        android:layout_width="142dp"
+        android:layout_height="158dp"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle"
+        android:alpha="0.6"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:src="@drawable/lock_copy"
+        android:visibility="gone"
+        />
+
+    </RelativeLayout>

@@ -1,0 +1,41 @@
+[33mcommit 7e176528d6d5f1355254ec8a75bfeedb83848f59[m
+Author: Eko Fajar Putra <ekofajarp27@gmail.com>
+Date:   Fri Sep 28 19:57:25 2018 +0700
+
+    Integrate greendao db and finish Library Activity
+
+[33mcommit fc54df52b99bc41623b0e162824585baea8b8478[m
+Author: Eko Fajar Putra <ekofajarp27@gmail.com>
+Date:   Thu Sep 27 21:07:49 2018 +0700
+
+    Add music with completed settings, SharedPreferences
+
+[33mcommit 90de45dc7e8abce9383558008e8ef3ca676ec5c6[m
+Author: Eko Fajar Putra <ekofajarp27@gmail.com>
+Date:   Tue Sep 25 10:01:05 2018 +0700
+
+    Fix splashscreen, MainActivity design implementation
+
+[33mcommit 83f923bcef14e764a83581620651ce96e0e879d5[m
+Author: rezyfr <frotylatz@gmail.com>
+Date:   Tue Jul 31 00:10:05 2018 +0700
+
+    added RecyclerView on Facts Page
+
+[33mcommit 497e904b47c19176ef63d630fe4d8513831c004b[m
+Author: rezyfr <frotylatz@gmail.com>
+Date:   Sun Jul 29 09:58:10 2018 +0700
+
+    added Splashscreen, facts&mainmenu rev
+
+[33mcommit 1acdd168a13cb5d58763106cef941789fdd3ea66[m
+Author: rezyfr <frotylatz@gmail.com>
+Date:   Tue Jul 24 11:39:49 2018 +0700
+
+    added Facts and Main Menu Pages
+
+[33mcommit 8ced1480f75a5552e91acb28650adcd1a94ad56a[m
+Author: Eko Fajar Putra <ekofajarp27@gmail.com>
+Date:   Mon Jul 23 23:53:21 2018 +0700
+
+    initial commit
