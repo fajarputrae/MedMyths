@@ -1,7 +1,9 @@
 package com.coinbkt.medmyth.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,15 +12,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.coinbkt.medmyth.AfterGameActivity;
 import com.coinbkt.medmyth.GameActivity;
 import com.coinbkt.medmyth.R;
 import com.coinbkt.medmyth.db.Packs;
+import com.coinbkt.medmyth.utils.SPMedmyth;
+
 import java.util.List;
 
 public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> {
 
     Context mContext;
     private List<Packs> packsList;
+
+    final Boolean isFx = SPMedmyth.getIsFX(mContext);
+    final MediaPlayer mp = MediaPlayer.create(mContext,R.raw.click);
+
+    MaterialDialog alertDialog;
 
     public PacksAdapter(Context context, List<Packs> packsList) {
         this.mContext = context;
@@ -54,16 +65,26 @@ public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> 
         if(packs.getPackStatus().equals("Locked")){
             holder.ivImageShadow.setVisibility(View.VISIBLE);
             holder.ivLock.setVisibility(View.VISIBLE);
-            holder.ivPackImage.setOnClickListener(null);
+            holder.ivPackImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isFx)
+                        mp.start();
+                    showAlertDialog("Ups!", "Poin kamu masih belum cukup, silahkan coba lagi :)");
+                }
+            });
         }
         else{
             holder.ivPackImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(isFx)
+                        mp.start();
                     Intent i = new Intent(mContext, GameActivity.class);
                     i.putExtra("name", packs.getPackName());
                     i.putExtra("idPack", packs.getIdPack());
                     mContext.startActivity(i);
+                    ((Activity)mContext).finish();
                 }
             });
         }
@@ -85,5 +106,21 @@ public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> 
             ivLock = (ImageView) itemView.findViewById(R.id.lock);
             ivImageShadow = (ImageView) itemView.findViewById(R.id.imgShadow);
         }
+    }
+
+    protected void showAlertDialog(String title, String message) {
+        alertDialog = new MaterialDialog.Builder(mContext)
+                .title(title)
+                .content(message)
+                .positiveText("OK")
+                .callback(new MaterialDialog.ButtonCallback() {
+
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        super.onPositive(dialog);
+                        dialog.dismiss();
+                    }
+                }).build();
+        alertDialog.show();
     }
 }

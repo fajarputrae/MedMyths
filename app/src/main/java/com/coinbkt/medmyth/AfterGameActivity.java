@@ -1,16 +1,23 @@
 package com.coinbkt.medmyth;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.coinbkt.medmyth.db.DaoSession;
 import com.coinbkt.medmyth.db.FMLibrary;
 import com.coinbkt.medmyth.db.FMLibraryDao;
+import com.coinbkt.medmyth.db.Packs;
+import com.coinbkt.medmyth.db.PacksDao;
+import com.coinbkt.medmyth.utils.SPMedmyth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +34,8 @@ public class AfterGameActivity extends AppCompatActivity {
     DaoSession daoSession;
     List<FMLibrary> fmLibraryList;
 
+    Packs packsNext;
+
     @BindView(R.id.tvScores)
     TextView tvScores;
     @BindView(R.id.tvScores1)
@@ -37,11 +46,17 @@ public class AfterGameActivity extends AppCompatActivity {
     TextView tvFMTitle;
     @BindView(R.id.tvMain)
     TextView tvMain;
+    @BindView(R.id.ivRetry)
+    ImageView ivRetry;
+    @BindView(R.id.ivPacks)
+    ImageView ivPacks;
+    @BindView(R.id.ivNext)
+    ImageView ivNext;
 
     String packName;
-    int point, randFact;
+    int point, randFact, idPack;
 
-    private final int REFRESH = 0;
+    MaterialDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +64,21 @@ public class AfterGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_after_game);
         ButterKnife.bind(this);
 
+        final Boolean isFx = SPMedmyth.getIsFX(this);
+        final MediaPlayer mp = MediaPlayer.create(this,R.raw.click);
+
         medMythApp = (MedMythApp) getApplication();
         daoSession = medMythApp.getDaoSession();
 
         Intent intent = new Intent(getIntent());
         packName = intent.getStringExtra("name");
         point = intent.getIntExtra("point",0);
+        idPack = intent.getIntExtra("idPack", 1);
+
         ArrayList<String> gameResult = intent.getStringArrayListExtra("gameResult");
 
         fmLibraryList = daoSession.getFMLibraryDao().queryBuilder().where(FMLibraryDao.Properties.PackName.eq(packName)).list();
+        packsNext = daoSession.getPacksDao().queryBuilder().where(PacksDao.Properties.IdPack.eq(idPack+1)).unique();
 
         tvScores.setText(String.valueOf(point));
         tvScores1.setText(String.valueOf(point));
@@ -99,11 +120,78 @@ public class AfterGameActivity extends AppCompatActivity {
         tvMain.setText(fmLibraryList.get(randFact).getDesc());
         tvMain.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
+        ivRetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFx)
+                    mp.start();
+                Intent i = new Intent(AfterGameActivity.this, GameActivity.class);
+                i.putExtra("name", packName);
+                i.putExtra("idPack", idPack);
+                startActivity(i);
+                AfterGameActivity.this.finish();
+            }
+        });
+
+        ivPacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFx)
+                    mp.start();
+                onBackPressed();
+            }
+        });
+
+        if(point>=80){
+            ivNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isFx)
+                        mp.start();
+                    Intent i = new Intent(AfterGameActivity.this, GameActivity.class);
+                    i.putExtra("name", packsNext.getPackName());
+                    i.putExtra("idPack", packsNext.getIdPack());
+                    startActivity(i);
+                    AfterGameActivity.this.finish();
+                }
+            });
+        }
+        else{
+            ivNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isFx)
+                        mp.start();
+                    showAlertDialog("Ups!", "Poin kamu masih belum cukup, silahkan coba lagi :)");
+                }
+            });
+            ivNext.setColorFilter(ContextCompat.getColor(AfterGameActivity.this, R.color.shadow));
+        }
+
+
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(AfterGameActivity.this, PackActivity.class);
         setResult(1);
+        startActivityForResult(intent, 0);
+        finish();
+    }
+
+    protected void showAlertDialog(String title, String message) {
+        alertDialog = new MaterialDialog.Builder(AfterGameActivity.this)
+                .title(title)
+                .content(message)
+                .positiveText("OK")
+                .callback(new MaterialDialog.ButtonCallback() {
+
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        super.onPositive(dialog);
+                        dialog.dismiss();
+                    }
+                }).build();
+        alertDialog.show();
     }
 }

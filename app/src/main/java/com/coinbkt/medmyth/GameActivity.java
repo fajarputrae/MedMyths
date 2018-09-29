@@ -1,6 +1,8 @@
 package com.coinbkt.medmyth;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import com.coinbkt.medmyth.db.FMLibraryDao;
 import com.coinbkt.medmyth.db.GamePoints;
 import com.coinbkt.medmyth.db.Packs;
 import com.coinbkt.medmyth.db.PacksDao;
+import com.coinbkt.medmyth.utils.SPMedmyth;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
 
@@ -39,11 +42,17 @@ public class GameActivity extends AppCompatActivity {
     String packName, swipeDirection;
     int idPack, point = 0;
 
+    Boolean isFx;
+    MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
+
+        isFx = SPMedmyth.getIsFX(this);
+        mp = MediaPlayer.create(this,R.raw.click);
 
         Intent intent = new Intent(getIntent());
         packName = intent.getStringExtra("name");
@@ -71,6 +80,8 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onCardSwiped(SwipeDirection direction) {
+                if(isFx)
+                    mp.start();
                 swipeDirection = direction.toString();
 
                 if(fmLibraryList.get(cardStackView.getTopIndex()-1).getStatus().equals(swipeDirection))
@@ -118,7 +129,7 @@ public class GameActivity extends AppCompatActivity {
                     intent.putStringArrayListExtra("gameResult", (ArrayList<String>) gameResult);
                     intent.putExtra("point", point);
                     intent.putExtra("name", packName);
-
+                    intent.putExtra("idPack", idPack);
 
                     startActivity(intent);
                     finish();
@@ -140,5 +151,13 @@ public class GameActivity extends AppCompatActivity {
                 Log.d("CardStackView", "onCardClicked: " + index);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GameActivity.this, PackActivity.class);
+        setResult(1);
+        startActivityForResult(intent, 0);
+        finish();
     }
 }

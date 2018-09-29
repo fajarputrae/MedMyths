@@ -70,13 +70,17 @@ public class PackActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1) {
+        if (requestCode == 0 && resultCode == 1) {
             packsList.clear();
             packsList.addAll(daoSession.getPacksDao().queryBuilder().list());
             adapter.notifyDataSetChanged();
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

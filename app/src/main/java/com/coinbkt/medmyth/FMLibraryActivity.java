@@ -364,14 +364,4 @@ public class FMLibraryActivity extends AppCompatActivity {
         fmLibraryList.addAll(daoSession.getFMLibraryDao().queryBuilder().list());
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0 && resultCode == 1) {
-            fmLibraryList.clear();
-            fmLibraryList.addAll(daoSession.getFMLibraryDao().queryBuilder().list());
-            adapter.notifyDataSetChanged();
-        }
-    }
 }
