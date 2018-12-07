@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 import com.coinbkt.medmyth.utils.SPMedmyth;
@@ -22,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
     Switch musicSwitch;
     @BindView(R.id.soundSwitch)
     Switch soundSwitch;
+    @BindView(R.id.creditContainer)
+    RelativeLayout creditContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,16 @@ public class SettingsActivity extends AppCompatActivity {
                 if(isFx)
                     mp.start();
                 SettingsActivity.this.finish();
+            }
+        });
+
+        creditContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFx)
+                    mp.start();
+                Intent intent = new Intent(SettingsActivity.this, CreditActivity.class);
+                startActivity(intent);
             }
         });
     }

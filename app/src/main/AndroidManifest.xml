@@ -10,13 +10,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".FMLibraryActivity" />
-        <activity android:name=".FMDetailActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FMLibraryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FMDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:screenOrientation="portrait" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -26,9 +38,18 @@
             android:name=".SoundService"
             android:enabled="true" />
 
-        <activity android:name=".PackActivity" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".AfterGameActivity"></activity>
+        <activity
+            android:name=".PackActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AfterGameActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CreditActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

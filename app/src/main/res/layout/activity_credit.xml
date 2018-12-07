@@ -17,6 +17,17 @@
         android:src="@drawable/back_icon" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham_bold"
+        android:text="Credits"
+        android:textSize="32sp"
+        android:textColor="@color/textColor2"
+        android:layout_marginTop="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
         android:id="@+id/tvPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,22 +55,24 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
 
+            <ImageView
+                android:id="@+id/logoid"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/unpad"
+                android:layout_margin="20dp"
+                android:layout_centerHorizontal="true"/>
+
             <TextView
+                android:layout_below="@id/logoid"
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_medium"
                 android:textSize="32sp"
                 android:layout_centerHorizontal="true"
-                android:text="FACT"
+                android:text="BKT Team"
                 android:textColor="@color/colorAccent" />
-
-            <ImageView
-                android:src="@drawable/hiasan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_below="@id/tvTitle"/>
 
 
         </RelativeLayout>
@@ -68,7 +81,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleContainer"
-            android:paddingBottom="16dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
 
             <TextView
                 android:id="@+id/tvMain"
@@ -76,6 +90,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_light"
                 android:textSize="21sp"
+                android:textAlignment="center"
+                android:text="Dzakia Rayhana\n(140810160015)\nFidriyanto Rizkillah\n(140810160043)\nVega Savera Yuana\n(140810160053)\nEko Fajar Putra\n(140810160061)\n"
                 android:lineSpacingExtra="6dp"
                 android:textColor="@color/textColor2"/>
 

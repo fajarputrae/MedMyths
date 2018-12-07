@@ -26,9 +26,6 @@ public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> 
     Context mContext;
     private List<Packs> packsList;
 
-    final Boolean isFx = SPMedmyth.getIsFX(mContext);
-    final MediaPlayer mp = MediaPlayer.create(mContext,R.raw.click);
-
     MaterialDialog alertDialog;
 
     public PacksAdapter(Context context, List<Packs> packsList) {
@@ -68,8 +65,6 @@ public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> 
             holder.ivPackImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(isFx)
-                        mp.start();
                     showAlertDialog("Ups!", "Poin kamu masih belum cukup, silahkan coba lagi :)");
                 }
             });
@@ -78,8 +73,6 @@ public class PacksAdapter extends RecyclerView.Adapter<PacksAdapter.ViewHolder> 
             holder.ivPackImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(isFx)
-                        mp.start();
                     Intent i = new Intent(mContext, GameActivity.class);
                     i.putExtra("name", packs.getPackName());
                     i.putExtra("idPack", packs.getIdPack());

@@ -102,7 +102,8 @@
                 android:textSize="17sp"
                 android:layout_marginTop="9dp"
                 android:lineSpacingExtra="6dp"
-                android:textColor="@color/textColor2"/>
+                android:textColor="@color/textColor2"
+                android:paddingBottom="16dp"/>
 
         </RelativeLayout>
 
