@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bold -->
+    <font
+        android:font="@font/gotham_bold"/>
+
+    <!--Medium-->
+    <font
+        android:font="@font/gotham_medium" />
+
+    <!--Light-->
+    <font
+        android:font="@font/gotham_light" />
+
+</font-family>
